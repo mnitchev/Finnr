@@ -1,0 +1,2 @@
+class Finnr(object):
+    pass

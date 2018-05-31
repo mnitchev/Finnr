@@ -4,4 +4,4 @@ class FramePositionMotionConverter(object):
         self.frame_height = frame_height
 
     def convert(self, position):
-        pass
+        pass  # fix me
