@@ -1,4 +1,4 @@
-from multiprocessing import Process, Value
+from multiprocessing import Process, Value, Array
 from time import sleep
 import RPi.GPIO as GPIO
 
