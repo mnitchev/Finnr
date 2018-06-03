@@ -25,19 +25,19 @@ def start_engine(momentum, steering, pins):
     right.start(0)
     
     while True:
-        if steering >= 0:
+        if steering.value >= 0:
             left.ChangeDutyCycle(0)
-            right.ChangeDutyCycle(int(momentum * 100))
+            right.ChangeDutyCycle(int(steering.value * 100))
         else:
             right.ChangeDutyCycle(0)
-            left.ChangeDutyCycle(int(momentum * 100))
+            left.ChangeDutyCycle(int(steering.value * 100))
 
-        if momentum >= 0:
+        if momentum.value>= 0:
             back.ChangeDutyCycle(0)
-            front.ChangeDutyCycle(int(momentum * 100))
+            front.ChangeDutyCycle(int(momentum.value * 100))
         else:
             front.ChangeDutyCycle(0)
-            back.ChangeDutyCycle(int(-momentum * 100))
+            back.ChangeDutyCycle(int(-momentum.value * 100))
 
 
 class Engine(object):
