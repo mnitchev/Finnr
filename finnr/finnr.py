@@ -13,7 +13,7 @@ class Finnr(object):
     def __init__(self):
         regulators = [BackObstacleRegulator(3.0), FrontObstacleRegulator(3.0)]
         trafficChain = RegulatorChain(regulators)
-        converter = FramePositionConverter(FRAME_WIDTH, FRAME_HEIGHT)
+        converter = FramePositionMotionConverter(FRAME_WIDTH, FRAME_HEIGHT)
         generator = RotatingMotionGenerator(SEEK_ROTATION_SPEED, ROTATION_DIRECTION)
 
         self.brain = Brain(trafficChain, converter, generator)
