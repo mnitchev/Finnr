@@ -1,5 +1,5 @@
 from .brain import Brain
-from .brain.regulator import RegulatorCain, BackObstacleRegulator, FrontObstacleRegulator
+from .brain.regulator import RegulatorChain, BackObstacleRegulator, FrontObstacleRegulator
 from .sensor import SensorCollector
 
 MIN_DISTANCE = 3.0
@@ -12,7 +12,7 @@ ROTATION_DIRECTION = 1.0
 class Finnr(object):
     def __init__(self):
         regulators = [BackObstacleRegulator(3.0), FrontObstacleRegulator(3.0)]
-        trafficChain = TrafficChain(regulators)
+        trafficChain = RegulatorChain(regulators)
         converter = FramePositionConverter(FRAME_WIDTH, FRAME_HEIGHT)
         generator = RotatingMotionGenerator(SEEK_ROTATION_SPEED, ROTATION_DIRECTION)
 
