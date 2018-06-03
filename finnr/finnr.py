@@ -24,12 +24,13 @@ class Finnr(object):
         self.done = False
 
     def start(self):
-        while not done:
+        while not self.done:
             sensorData = self.sensorCollector.collect()
             motion = self.brain.think()
             self.engine.set_direction(motion)
 
     def stop(self):
+        self.done = True
         self.engine.stop()
 
     def __del__(self):
