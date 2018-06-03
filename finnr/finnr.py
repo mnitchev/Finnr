@@ -2,6 +2,7 @@ from .brain import Brain
 from .motion import FramePositionMotionConverter, RotatingMotionGenerator
 from .brain.regulator import RegulatorChain, BackObstacleRegulator, FrontObstacleRegulator
 from .sensor import SensorCollector
+from .actuator import Engine
 
 MIN_DISTANCE = 3.0
 FRAME_WIDTH = 640
