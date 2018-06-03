@@ -10,7 +10,7 @@ class Brain(object):
         self.seek_motion_generator = generator
 
     def think(self, sensorData):
-        if(sensor_data.target_visible()):
+        if(sensorData.target_visible()):
             target = sensorData.targetPosition
             motion = self.convert_to_motion(target)
             return self.traffic_chain.regulate(motion, sensorData)
