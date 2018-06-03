@@ -6,10 +6,14 @@ from imutils.video import VideoStream
 import imutils
 import time
 
+DARK_GREEN=(29, 86, 6)
+LIGHT_GREEN=(64, 255, 255)
+
 class Camera(object):
-    def __init__(self, targetColor, minSize):
+    def __init__(self, targetColor=(DARK_GREEN, LIGHT_GREEN), minSize=20, render=True):
         self.targetColor = targetColor
         self.minSize = minSize
+        self.render_enabled = render
         print("[INFO] Initializing camera...")
         self.stream = VideoStream(usePiCamera=True, resolution=(640, 480))
         time.sleep(2)
@@ -20,14 +24,13 @@ class Camera(object):
 
     def get_position(self):
         frame = self.stream.read()
-        frame = frame[1] if args.get("video", False) else frame
 
         frame = imutils.resize(frame, width=600)
         blurred = cv2.GaussianBlur(frame, (11, 11), 0)
         hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
         
-        lower, higher = self.targetColor
-        mask = cv2.inRange(hsv, lower, higher)
+        darker, lighter = self.targetColor
+        mask = cv2.inRange(hsv, darker, lighter)
         mask = cv2.erode(mask, None, iterations=2)
         mask = cv2.dilate(mask, None, iterations=2)
 
