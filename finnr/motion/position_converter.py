@@ -1,3 +1,5 @@
+from .motion import Motion
+
 class FramePositionMotionConverter(object):
     def __init__(self, frame_width, frame_height, max_size):
         self.frame_width = frame_width
