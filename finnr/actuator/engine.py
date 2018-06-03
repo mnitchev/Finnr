@@ -52,7 +52,7 @@ class Engine(object):
         self.momentum = Value('d', 0.0)
         self.steering = Value('d', 0.0)
 
-    def set_course(self, motion):
+    def set_direction(self, motion):
         self.momentum.value = motion.momentum
         self.steering.value = motion.steering
 
