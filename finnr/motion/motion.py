@@ -9,3 +9,6 @@ class Motion(object):
 
     def stop(self):
         return Motion(0, 0)
+
+    def is_forward(self):
+        return self.momentum > 0
