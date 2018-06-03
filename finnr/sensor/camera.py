@@ -50,7 +50,7 @@ class Camera(object):
         else:
             if self.render_enabled:
                 self.show_image(frame)
-            return (((0,0), 0), False)
+            return (((0.0,0.0), 0.0), False)
 
 
     def render_camera(self, frame, c, position):
