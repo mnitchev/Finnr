@@ -1,4 +1,5 @@
 from .brain import Brain
+from .motion import FramePositionMotionConverter
 from .brain.regulator import RegulatorChain, BackObstacleRegulator, FrontObstacleRegulator
 from .sensor import SensorCollector
 
