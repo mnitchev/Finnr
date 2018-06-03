@@ -57,7 +57,7 @@ class Engine(object):
 
     def start(self):
         pins = Array('i', [self.frontPositive, self.frontNegative, self.rearPositive, self.rearNegative])
-        self.engineProcess = Process(target=start_engine, args=(self.momentum, self.steeringa, pins)
+        self.engineProcess = Process(target=start_engine, args=(self.momentum, self.steeringa, pins))
         self.engineProcess.start()
 
     def stop(self):
