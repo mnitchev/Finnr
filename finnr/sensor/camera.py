@@ -48,6 +48,8 @@ class Camera(object):
                 self.render_camera(frame, c, position)
             return ((x,y), radius), True
         else:
+            if self.render_enabled:
+                self.show_image()
             return (((0,0), 0), False)
 
 
@@ -59,6 +61,9 @@ class Camera(object):
             cv2.circle(frame, (int(x), int(y)), int(radius),
                     (0, 255, 255), 2)
             cv2.circle(frame, center, 5, (0, 0, 255), -1)
+        self.show_image(frame)
+
+    def show_image(self, frame):
         cv2.imshow("Frame", frame)
         key = cv2.waitKey(1) & 0xFF
 
