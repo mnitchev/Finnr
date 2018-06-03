@@ -49,7 +49,7 @@ class Camera(object):
             return ((x,y), radius), True
         else:
             if self.render_enabled:
-                self.show_image()
+                self.show_image(frame)
             return (((0,0), 0), False)
 
 
