@@ -13,7 +13,7 @@ def start_engine(momentum, steering, pins):
     GPIO.setup(frontPositive, GPIO.OUT)
     GPIO.setup(frontNegative, GPIO.OUT)
     GPIO.setup(rearPositive, GPIO.OUT)
-    GPIO.setip(rearNegative, GPIO.OUT)
+    GPIO.setup(rearNegative, GPIO.OUT)
 
     forward = GPIO.PWM(rearPositive, 100)
     back = GPIO.PWM(rearNegative, 100)
