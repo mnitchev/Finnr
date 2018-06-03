@@ -2,7 +2,7 @@ class RegulatorChain(object):
     def __init__(self, regulators):
         self.regulators = regulators
 
-    def regulate(self, motion, sensor_data):
+    def regulate(self, motion, sensorData):
         for r in self.regulators:
-            motion = r.regulate(motion, sensor_data)
+            motion = r.regulate(motion, sensorData)
         return motion
