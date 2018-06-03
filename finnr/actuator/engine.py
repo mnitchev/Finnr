@@ -53,7 +53,8 @@ class Engine(object):
         self.steering = Value('d', 0.0)
 
     def set_course(self, motion):
-        self.motion = motion
+        self.momentum.value = motion.momentum
+        self.steering.value = motion.steering
 
     def start(self):
         pins = Array('i', [self.frontPositive, self.frontNegative, self.rearPositive, self.rearNegative])
