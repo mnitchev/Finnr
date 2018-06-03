@@ -4,13 +4,11 @@ from ..motion import RotatingMotionGenerator
 
 class Brain(object):
 
-    def __init__(self, traffic_chain, config):
+    def __init__(self, traffic_chain, converter, generator):
         self.traffic_chain = traffic_chain
         self.min_distance = config.min_distance
-        self.motion_converter = FramePositionMotionConverter(
-            config.frame_width, config.frame_height)
-        self.seek_motion_generator = RotatingMotionGenerator(
-            config.seek_rotation_speed, config.rotation_direction)
+        self.motion_converter = converter
+        self.seek_motion_generator = generator
 
     def think(self, sensor_data):
         if(sensor_data.target_visible()):
