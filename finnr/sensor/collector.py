@@ -1,10 +1,17 @@
 from .camera import Camera
 from .distance import BatDistanceSensor
 
+class Position(object):
+    def __init__(self, x, y, size):
+        self.x = x
+        self.y = y
+        self.size = size
+
 class SensorData(object):
     def __init__(self, targetPositionData, backDistance, frontDistance):
         position, visible = targetPositionData
-        self.targetPosition = position
+        ((x,y), size) = position
+        self.targetPosition = Position(x, y, size)
         self.targetVisible = visible
         self.backDistance = backDistance
         self.frontDistance = frontDistance
