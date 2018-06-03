@@ -1,5 +1,5 @@
 from .brain import Brain
-from .brain.regulator import Chain, BackObstacleRegulator, FrontObstacleRegulator
+from .brain.regulator import RegulatorCain, BackObstacleRegulator, FrontObstacleRegulator
 from .sensor import SensorCollector
 
 MIN_DISTANCE = 3.0

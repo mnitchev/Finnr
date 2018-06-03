@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from .finnr import Finnr
+from finnr import Finnr
 
 def main():
     fin = Finnr()
