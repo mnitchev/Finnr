@@ -9,13 +9,13 @@ FRAME_WIDTH = 640
 FRAME_HEIGHT = 480
 SEEK_ROTATION_SPEED = 0.5
 ROTATION_DIRECTION = 1.0
-
+MAX_TARGET_SIZE = 100
 
 class Finnr(object):
     def __init__(self):
         regulators = [BackObstacleRegulator(3.0), FrontObstacleRegulator(3.0)]
         trafficChain = RegulatorChain(regulators)
-        converter = FramePositionMotionConverter(FRAME_WIDTH, FRAME_HEIGHT)
+        converter = FramePositionMotionConverter(FRAME_WIDTH, FRAME_HEIGHT, MAX_TARGET_SIZE)
         generator = RotatingMotionGenerator(SEEK_ROTATION_SPEED, ROTATION_DIRECTION)
 
         self.brain = Brain(trafficChain, converter, generator)
