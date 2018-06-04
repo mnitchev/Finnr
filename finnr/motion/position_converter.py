@@ -12,6 +12,6 @@ class FramePositionMotionConverter(object):
         momentum = abs(self.max_size - position.size) / self.max_size
         motion = Motion(momentum, steering)
 
-        if position.x < halfw:
+        if position.x >= halfw:
             motion.steering = -motion.steering
         return motion

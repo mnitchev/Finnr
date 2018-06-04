@@ -20,7 +20,7 @@ class BatDistanceSensor(object):
         time.sleep(0.00001)
         GPIO.output(self.triggerPin, GPIO.LOW)
         pulse_start_time = time.time()
-        puse_end_time = time.time()
+        pulse_end_time = time.time()
         while GPIO.input(self.echoPin)==0:
             pulse_start_time = time.time()
         while GPIO.input(self.echoPin)==1:
