@@ -25,7 +25,7 @@ def start_engine(momentum, steering, pins):
     right.start(0)
     
     while True:
-        sleep(0.05)
+        sleep(0.1)
         try:
             if steering.value >= 0:
                 left.ChangeDutyCycle(0)

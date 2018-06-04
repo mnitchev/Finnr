@@ -3,6 +3,7 @@ from .motion import FramePositionMotionConverter, RotatingMotionGenerator
 from .brain.regulator import RegulatorChain, BackObstacleRegulator, FrontObstacleRegulator
 from .sensor import SensorCollector
 from .actuator import Engine
+from time import sleep
 
 MIN_DISTANCE = 3.0
 FRAME_WIDTH = 640
@@ -26,6 +27,7 @@ class Finnr(object):
 
     def start(self):
         while not self.done:
+            sleep(0.1)
             sensorData = self.sensorCollector.collect()
             print("[INFO] Sensor data: ", sensorData)
             motion = self.brain.think(sensorData)
