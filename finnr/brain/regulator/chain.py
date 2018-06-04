@@ -4,5 +4,6 @@ class RegulatorChain(object):
 
     def regulate(self, motion, sensorData):
         for r in self.regulators:
+            print("[DEBUG] Current motion: ", motion)
             motion = r.regulate(motion, sensorData)
         return motion

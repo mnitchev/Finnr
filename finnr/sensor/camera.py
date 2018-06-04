@@ -43,7 +43,7 @@ class Camera(object):
             c = max(cnts, key=cv2.contourArea)
             position = cv2.minEnclosingCircle(c)
             ((x, y), radius) = position
-            print("Coordinates: ", x, y, " Size: ", radius)
+            #print("Coordinates: ", x, y, " Size: ", radius)
             if self.render_enabled:
                 self.render_camera(frame, c, position)
             return ((x,y), radius), True

@@ -26,7 +26,9 @@ class Finnr(object):
     def start(self):
         while not self.done:
             sensorData = self.sensorCollector.collect()
+            print("[INFO] Sensor data: ", sensorData)
             motion = self.brain.think(sensorData)
+            print("[INFO] Motion: ", motion)
             self.engine.set_direction(motion)
 
     def stop(self):
