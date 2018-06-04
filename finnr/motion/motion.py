@@ -1,6 +1,6 @@
 
 class Motion(object):
-    def __init__(self, steering, momentum):
+    def __init__(self,  momentum, steering):
         self.momentum = momentum
         self.steering = steering
 

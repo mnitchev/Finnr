@@ -32,7 +32,7 @@ def start_engine(momentum, steering, pins):
             right.ChangeDutyCycle(0)
             left.ChangeDutyCycle(int(-steering.value * 100))
 
-        if momentum.value>= 0:
+        if momentum.value >= 0:
             back.ChangeDutyCycle(0)
             forward.ChangeDutyCycle(int(momentum.value * 100))
         else:
