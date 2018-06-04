@@ -25,6 +25,7 @@ def start_engine(momentum, steering, pins):
     right.start(0)
     
     while True:
+        print(momentum.value, steering.value)
         if steering.value >= 0:
             left.ChangeDutyCycle(0)
             right.ChangeDutyCycle(steering.value * 100)
