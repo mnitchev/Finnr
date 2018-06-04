@@ -45,8 +45,8 @@ def start_engine(momentum, steering, pins):
 
 def convert_speed(value):
     value = convert(value)
-    if value > 0.7:
-        return 0.7
+    if value > 70:
+        return 70
     return value
 
 def convert(value):
