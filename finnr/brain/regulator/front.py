@@ -3,7 +3,7 @@ class FrontObstacleRegulator(object):
         self.minDistance = minFrontDistance
 
     def regulate(self, motion, sensorData):
-        if motion.is_forward() and self.can_move_forward(sensorData):
+        if motion.is_forward() and not self.can_move_forward(sensorData):
             return motion.reverse()
         else:
             return motion.stop()
