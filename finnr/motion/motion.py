@@ -14,4 +14,4 @@ class Motion(object):
         return self.momentum > 0
 
     def __str__(self):
-        return "{ Momentum: " + self.momentum + ", Steering: " + self.steering + " }"
+        return "{ Momentum: " + str(self.momentum) + ", Steering: " + str(self.steering) + " }"

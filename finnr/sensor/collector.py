@@ -8,7 +8,7 @@ class Position(object):
         self.size = size
 
     def __str__(self):
-        return "{ X: " + self.x + ", Y: " + self.y + " }"
+        return "{ X: " + str(self.x) + ", Y: " + str(self.y) + " }"
 
 class SensorData(object):
     def __init__(self, targetPositionData, backDistance, frontDistance):
@@ -23,7 +23,7 @@ class SensorData(object):
         return self.targetVisible
 
     def __str__(self):
-        return "{Pos: " + str(self.targetPosition) + ", Vis: " + self.targetVisible + ", B: " + self.backDistance + ", F: " + self.frontDistance + " }"
+        return "{Pos: " + str(self.targetPosition) + ", Vis: " + str(self.targetVisible) + ", B: " + str(self.backDistance) + ", F: " + str(self.frontDistance) + " }"
 
 class SensorCollector(object):
     def __init__(self):
