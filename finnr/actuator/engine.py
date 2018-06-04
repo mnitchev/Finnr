@@ -36,10 +36,10 @@ def start_engine(momentum, steering, pins):
 
             if momentum.value >= 0:
                 back.ChangeDutyCycle(0)
-                forward.ChangeDutyCycle(momentum.value * 100)
+                forward.ChangeDutyCycle(convert_speed(momentum.value))
             else:
                 forward.ChangeDutyCycle(0)
-                back.ChangeDutyCycle(-momentum.value * 100)
+                back.ChangeDutyCycle(convert_speed(-momentum.value))
         except ValueError as e:
             print("Values: ", momentum.value, steering.value, e)
 
