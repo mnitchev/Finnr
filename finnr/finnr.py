@@ -20,7 +20,7 @@ class Finnr(object):
 
         self.brain = Brain(trafficChain, converter, generator)
         self.sensorCollector = SensorCollector()
-        self.engine = Engine((35,37), (31, 33))
+        self.engine = Engine((37,35), (31, 33))
         self.engine.start()
         self.done = False
 
