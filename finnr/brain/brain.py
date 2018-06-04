@@ -13,8 +13,9 @@ class Brain(object):
         if(sensorData.target_visible()):
             target = sensorData.targetPosition
             motion = self.convert_to_motion(target)
-            return self.traffic_chain.regulate(motion, sensorData)
-        return self.get_seek_motion()
+        else:
+            motion = self.get_seek_motion()
+        return self.traffic_chain.regulate(motion, sensorData)
 
     def convert_to_motion(self, target):
         return self.motion_converter.convert(target)
