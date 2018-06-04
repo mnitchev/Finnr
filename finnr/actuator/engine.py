@@ -51,14 +51,15 @@ class Engine(object):
         self.frontNegative = frontNegative
         self.momentum = Value('d', 0.0)
         self.steering = Value('d', 0.0)
+        pins = Array('i', [self.frontPositive, self.frontNegative, self.rearPositive, self.rearNegative])
+        self.engineProcess = Process(target=start_engine, args=(self.momentum, self.steering, pins))
+
 
     def set_direction(self, motion):
         self.momentum.value = motion.momentum
         self.steering.value = motion.steering
 
     def start(self):
-        pins = Array('i', [self.frontPositive, self.frontNegative, self.rearPositive, self.rearNegative])
-        self.engineProcess = Process(target=start_engine, args=(self.momentum, self.steering, pins))
         self.engineProcess.start()
 
     def stop(self):
