@@ -14,7 +14,7 @@ MAX_TARGET_SIZE = 150
 
 class Finnr(object):
     def __init__(self):
-        regulators = [BackObstacleRegulator(3.0), FrontObstacleRegulator(3.0)]
+        regulators = [BackObstacleRegulator(MIN_DISTANCE), FrontObstacleRegulator(MIN_DISTANCE)]
         trafficChain = RegulatorChain(regulators)
         converter = FramePositionMotionConverter(FRAME_WIDTH, FRAME_HEIGHT, MAX_TARGET_SIZE)
         generator = RotatingMotionGenerator(SEEK_ROTATION_SPEED, ROTATION_DIRECTION)

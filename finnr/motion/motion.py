@@ -11,7 +11,7 @@ class Motion(object):
         return Motion(0, 0)
 
     def is_forward(self):
-        return self.momentum > 0
+        return self.momentum >= 0
 
     def __str__(self):
         return "{ Momentum: " + str(self.momentum) + ", Steering: " + str(self.steering) + " }"
