@@ -4,6 +4,7 @@ class BackObstacleRegulator(object):
 
     def regulate(self, motion, sensorData):
         if not motion.is_forward() and not self.can_move_back(sensorData):
+            print("Can't move back: ", motion.is_forward(), self.can_move_back(sensorData))
             return motion.reverse()
         else:
             return motion

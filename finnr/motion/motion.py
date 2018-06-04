@@ -1,4 +1,3 @@
-
 class Motion(object):
     def __init__(self,  momentum, steering):
         self.momentum = momentum
