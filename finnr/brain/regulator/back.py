@@ -10,4 +10,4 @@ class BackObstacleRegulator(object):
             return motion
 
     def can_move_back(self, sensorData):
-        return sensorData.backDistance < self.minDistance
+        return sensorData.backDistance > self.minDistance

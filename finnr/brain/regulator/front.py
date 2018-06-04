@@ -10,4 +10,4 @@ class FrontObstacleRegulator(object):
             return motion
 
     def can_move_forward(self, sensorData):
-        return sensorData.frontDistance < self.minDistance
+        return sensorData.frontDistance > self.minDistance
