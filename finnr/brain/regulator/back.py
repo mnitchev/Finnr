@@ -6,7 +6,7 @@ class BackObstacleRegulator(object):
         if not motion.is_forward() and not self.can_move_back(sensorData):
             return motion.reverse()
         else:
-            return motion.stop()
+            return motion
 
     def can_move_back(self, sensorData):
         return sensorData.backDistance < self.minDistance
