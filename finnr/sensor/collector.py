@@ -8,7 +8,7 @@ class Position(object):
         self.size = size
 
     def __str__(self):
-        return "{ X: " + self.x + ", Y: " self.y + " }"
+        return "{ X: " + self.x + ", Y: " + self.y + " }"
 
 class SensorData(object):
     def __init__(self, targetPositionData, backDistance, frontDistance):
