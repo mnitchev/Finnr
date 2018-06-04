@@ -25,19 +25,23 @@ def start_engine(momentum, steering, pins):
     right.start(0)
     
     while True:
-        if steering.value >= 0:
-            left.ChangeDutyCycle(0)
-            right.ChangeDutyCycle(convert(steering.value))
-        else:
-            right.ChangeDutyCycle(0)
-            left.ChangeDutyCycle(convert(-steering.value))
+        sleep(0.05)
+        try:
+            if steering.value >= 0:
+                left.ChangeDutyCycle(0)
+                right.ChangeDutyCycle(convert(steering.value))
+            else:
+                right.ChangeDutyCycle(0)
+                left.ChangeDutyCycle(convert(-steering.value))
 
-        if momentum.value >= 0:
-            back.ChangeDutyCycle(0)
-            forward.ChangeDutyCycle(convert(momentum.value))
-        else:
-            forward.ChangeDutyCycle(0)
-            back.ChangeDutyCycle(convert(-momentum.value))
+            if momentum.value >= 0:
+                back.ChangeDutyCycle(0)
+                forward.ChangeDutyCycle(convert(momentum.value))
+            else:
+                forward.ChangeDutyCycle(0)
+                back.ChangeDutyCycle(convert(-momentum.value))
+        except ValueError as e:
+            print("Values: ", momentum.value, steering.value, e)
 
 def convert(value):
     result = value * 65 + 35
