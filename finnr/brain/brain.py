@@ -20,4 +20,4 @@ class Brain(object):
         return self.motion_converter.convert(target)
 
     def get_seek_motion(self):
-        self.seek_motion_generator.generate()
+        return self.seek_motion_generator.generate()

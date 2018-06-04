@@ -55,9 +55,9 @@ class Engine(object):
         self.engineProcess = Process(target=start_engine, args=(self.momentum, self.steering, pins))
 
 
-    def set_direction(self, motion):
-        self.momentum.value = motion.momentum
-        self.steering.value = motion.steering
+    def set_direction(self, direction):
+        self.momentum.value = direction.momentum
+        self.steering.value = direction.steering
 
     def start(self):
         self.engineProcess.start()
