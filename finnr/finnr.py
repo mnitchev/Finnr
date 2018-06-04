@@ -5,12 +5,12 @@ from .sensor import SensorCollector
 from .actuator import Engine
 from time import sleep
 
-MIN_DISTANCE = 3.0
+MIN_DISTANCE = 10.0
 FRAME_WIDTH = 640
 FRAME_HEIGHT = 480
 SEEK_ROTATION_SPEED = 0.5
 ROTATION_DIRECTION = 1.0
-MAX_TARGET_SIZE = 100
+MAX_TARGET_SIZE = 150
 
 class Finnr(object):
     def __init__(self):
