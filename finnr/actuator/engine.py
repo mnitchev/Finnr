@@ -29,10 +29,10 @@ def start_engine(momentum, steering, pins):
         try:
             if steering.value >= 0:
                 left.ChangeDutyCycle(0)
-                right.ChangeDutyCycle(convert(steering.value))
+                right.ChangeDutyCycle(convert_steering(steering.value))
             else:
                 right.ChangeDutyCycle(0)
-                left.ChangeDutyCycle(convert(-steering.value))
+                left.ChangeDutyCycle(convert_steering(-steering.value))
 
             if momentum.value >= 0:
                 back.ChangeDutyCycle(0)
@@ -45,8 +45,14 @@ def start_engine(momentum, steering, pins):
 
 def convert_speed(value):
     value = convert(value)
-    if value > 70:
-        return 70
+    if value > 60:
+        return 60
+    return value
+
+def convert_steering(value):
+    value = convert(value)
+    if value < 60:
+        return 60
     return value
 
 def convert(value):
