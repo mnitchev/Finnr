@@ -1,6 +1,6 @@
 from ..motion import FramePositionMotionConverter
 from ..motion import RotatingMotionGenerator
-
+from ..motion import Motion
 
 class Brain(object):
 
@@ -8,16 +8,23 @@ class Brain(object):
         self.traffic_chain = traffic_chain
         self.motion_converter = converter
         self.seek_motion_generator = generator
+        self.previous = Motion(0, 0)
 
     def think(self, sensorData):
         if(sensorData.target_visible()):
             target = sensorData.targetPosition
             motion = self.convert_to_motion(target)
-            return self.traffic_chain.regulate(motion, sensorData)
-        return self.get_seek_motion()
+        else:
+            motion = self.get_seek_motion()
+            if self.previous.steering < 0:
+                motion.steering = -motion.steering
+        motion = self.traffic_chain.regulate(motion, sensorData)
+        self.previous = motion
+        return motion
+    
 
     def convert_to_motion(self, target):
         return self.motion_converter.convert(target)
 
     def get_seek_motion(self):
-        self.seek_motion_generator.generate()
+        return self.seek_motion_generator.generate()

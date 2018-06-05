@@ -25,20 +25,41 @@ def start_engine(momentum, steering, pins):
     right.start(0)
     
     while True:
-        if steering.value >= 0:
-            left.ChangeDutyCycle(0)
-            right.ChangeDutyCycle(int(steering.value * 100))
-        else:
-            right.ChangeDutyCycle(0)
-            left.ChangeDutyCycle(int(steering.value * 100))
+        sleep(0.1)
+        try:
+            if steering.value >= 0:
+                left.ChangeDutyCycle(0)
+                right.ChangeDutyCycle(steering.value * 100)
+            else:
+                right.ChangeDutyCycle(0)
+                left.ChangeDutyCycle(-steering.value * 100)
 
-        if momentum.value>= 0:
-            back.ChangeDutyCycle(0)
-            forward.ChangeDutyCycle(int(momentum.value * 100))
-        else:
-            forward.ChangeDutyCycle(0)
-            back.ChangeDutyCycle(int(-momentum.value * 100))
+            if momentum.value >= 0:
+                back.ChangeDutyCycle(0)
+                forward.ChangeDutyCycle(convert_speed(momentum.value))
+            else:
+                forward.ChangeDutyCycle(0)
+                back.ChangeDutyCycle(convert_speed(-momentum.value))
+        except ValueError as e:
+            print("Values: ", momentum.value, steering.value, e)
 
+def convert_speed(value):
+    value = convert(value)
+    if value > 60:
+        return 60
+    return value
+
+def convert_steering(value):
+    value = convert(value)
+    if value < 70:
+        return 70
+    return value
+
+def convert(value):
+    result = value * 100
+    if result <= 35:
+        return 40
+    return result
 
 class Engine(object):
     def __init__(self, frontMotorPins, rearMotorPins):
@@ -51,14 +72,15 @@ class Engine(object):
         self.frontNegative = frontNegative
         self.momentum = Value('d', 0.0)
         self.steering = Value('d', 0.0)
-
-    def set_direction(self, motion):
-        self.momentum.value = motion.momentum
-        self.steering.value = motion.steering
-
-    def start(self):
         pins = Array('i', [self.frontPositive, self.frontNegative, self.rearPositive, self.rearNegative])
         self.engineProcess = Process(target=start_engine, args=(self.momentum, self.steering, pins))
+
+
+    def set_direction(self, direction):
+        self.momentum.value = direction.momentum
+        self.steering.value = direction.steering
+
+    def start(self):
         self.engineProcess.start()
 
     def stop(self):
