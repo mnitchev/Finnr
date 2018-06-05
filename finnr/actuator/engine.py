@@ -51,14 +51,14 @@ def convert_speed(value):
 
 def convert_steering(value):
     value = convert(value)
-    if value < 60:
-        return 60
+    if value < 70:
+        return 70
     return value
 
 def convert(value):
-    result = value * 65 + 35
+    result = value * 100
     if result <= 35:
-        return 0
+        return 40
     return result
 
 class Engine(object):
